@@ -81,11 +81,14 @@ Connect to it with your miner of choise:
 
 | status | miner | example |
 | - | - | - |
-| :heavy_check_mark: Works | T-rex | t-rex -a soterg -o stratum+tcp://PROXY_IP:54325 -u YOUR_WALLET_ADDRESS -p x |
-| :heavy_check_mark: Works | TeamRedMiner | teamredminer -o stratum+tcp://PROXY_IP:54325 -u YOUR_WALLET_ADDRESS -p x --eth_hash_report=on |
-| :heavy_check_mark: Works | Gminer | miner --algo soterg --server stratum+tcp://PROXY_IP:54325 --user YOUR_WALLET_ADDRESS --pass x |
-| :exclamation:   Errors | NBminer | :grey_question: |
-| :heavy_check_mark: Works | ccminer-soterg | ccminer-soterg -P stratum+tcp://YOUR_WALLET_ADDRESS.worker@PROXY_IP:54325 |
+| :heavy_check_mark: Works | ccminer-soterg | ccminer-soterg  --a soterg -P stratum+tcp://YOUR_WALLET_ADDRESS.worker@PROXY_IP:54325 |
+| :heavy_check_mark: Coming Soon | WildRig Multi | wildrig-multi --a soterg -o stratum+tcp://PROXY_IP:54325 --u wallet |
+| :heavy_check_mark: Coming Soon | SRBMiner-MULTI | srbminer-multi --algorithm soterg --pool PROXY_IP:54325 ---wallet wallet --keepalive true |
+| :heavy_check_mark: Coming Soon | OneZeroMiner | --algo soterg --server stratum+tcp://PROXY_IP:54325 --user YOUR_WALLET_ADDRESS --pass x |
+| :heavy_check_mark: Coming Soon | T-rex | t-rex -a soterg -o stratum+tcp://PROXY_IP:54325 -u YOUR_WALLET_ADDRESS -p x |
+| :heavy_check_mark: Coming Soon | TeamRedMiner | teamredminer -o stratum+tcp://PROXY_IP:54325 -u YOUR_WALLET_ADDRESS -p x --eth_hash_report=on |
+| :heavy_check_mark: Coming Soon | Gminer | miner --algo soterg --server stratum+tcp://PROXY_IP:54325 --user YOUR_WALLET_ADDRESS --pass x |
+
 
 <a name="help"/>
 
