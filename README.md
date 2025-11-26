@@ -3,13 +3,11 @@ Allows you to mine directly to your own local wallet/node with any mining softwa
 
 If you are a windows user and are not familiar with python, a walk-through and auto installer is avaliable for a (hopefully) easy install. See [here](#windows).
 
-## *Important Note*
-This is BETA software mainly tested on test-net, but has been confirmed to work on mainnet. (First known coinbase thanks to @pdath: https://rvn.cryptoscope.io/api/getrawtransaction/?txid=abf95dd29ac6732b5ff068bbc1063ef734268a2f04459f3be8ce2f5ea2d1e529&decode=1 can check by putting the vin0 coinbase into a hex->ascii converter).
 
-## *Important Note 2*
+## *Important Note 1*
 This is not pool software and is meant for solo-mining. All proceeds go to the address of the first miner that connects.
 
-## *Important Note 3*
+## *Important Note 2*
 Mining software will only send a share when it has found a block. No shares for long periods of time is normal behavior.
 
 ## Table of Contents  
@@ -56,6 +54,8 @@ On *nix OS's this file is located at `~/.soteria` by default. On windows, this f
 You may need to create the `soteria.conf` file and add those lines if it does not exist.
 
 For testnet you can add `testnet=1` to your `soteria.conf`
+
+## Note: Please keep in mind that Soteria testnet is sha256d algorithm and must be CPU mined.
 
 note:
 - Default Mainnet rpcport = `7896`
