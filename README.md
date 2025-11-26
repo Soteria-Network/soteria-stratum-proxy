@@ -90,6 +90,10 @@ Connect to it with your miner of choise:
 | :heavy_check_mark: Coming Soon | Gminer | miner --algo soterg --server stratum+tcp://PROXY_IP:54325 --user YOUR_WALLET_ADDRESS --pass x |
 
 
+## Video Instruction:
+https://www.youtube.com/watch?v=AOMUkxFzb8U
+
+
 <a name="help"/>
 
 ## Help:
