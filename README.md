@@ -91,8 +91,12 @@ Connect to it with your miner of choise:
 
 
 ## Video Instruction:
+
+#### For Windows
 https://www.youtube.com/watch?v=AOMUkxFzb8U
 
+#### For Linux
+https://www.youtube.com/watch?v=f6RqfnguN0Q
 
 <a name="help"/>
 
