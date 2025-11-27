@@ -15,14 +15,9 @@ from hashlib import sha256
 from typing import Set, List, Optional
 from datetime import datetime
 
-
-SOTERG_EPOCH_LENGTH = 60000
 hashratedict = {}
 
 def var_int(i: int) -> bytes:
-    # https://en.bitcoin.it/wiki/Protocol_specification#Variable_length_integer
-    # https://github.com/bitcoin/bitcoin/blob/efe1ee0d8d7f82150789f1f6840f139289628a2b/src/serialize.h#L247
-    # "CompactSize"
     assert i >= 0, i
     if i<0xfd:
         return i.to_bytes(1, 'little')
@@ -348,39 +343,21 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, node_url: s
                     print('New block, update state')
                     new_block = True
 
-                    # Generate seed hash #
-                    if state.height == - 1 or height_int > state.height:
-                        if not state.seedHash:
-                            seed_hash = bytes(32)
-                            for _ in range(height_int//SOTERG_EPOCH_LENGTH):
-                                k = sha3.keccak_256()
-                                k.update(seed_hash)
-                                seed_hash = k.digest()
-                            print(f'Initialized seedhash to {seed_hash.hex()}')
-                            state.seedHash = seed_hash
-                        elif state.height % SOTERG_EPOCH_LENGTH == 0:
-                            # Hashing is expensive, so want use the old val
-                            k = sha3.keccak_256()
-                            k.update(state.seedHash)
-                            seed_hash = k.digest()
-                            print(f'updated seed hash to {seed_hash.hex()}')
-                            state.seedHash = seed_hash
-                    elif state.height > height_int:
-                        # Maybe a chain reorg?
-                        
-                        # If the difference between heights is greater than how far we are into the epoch
-                        if state.height % SOTERG_EPOCH_LENGTH - (state.height - height_int) < 0:
-                            # We must go back an epoch; recalc
-                            seed_hash = bytes(32)
-                            for _ in range(height_int//SOTERG_EPOCH_LENGTH):
-                                k = sha3.keccak_256()
-                                k.update(seed_hash)
-                                seed_hash = k.digest()
-                            print(f'Reverted seedhash to {seed_hash}')
-                            state.seedHash = seed_hash
-
-                    # Done with seed hash #
-                    state.height = height_int
+				# Generate seed hash #
+				if state.height == -1 or height_int > state.height:
+    				if not state.seedHash:
+        				# Just initialize once
+        				seed_hash = bytes(32)
+        				print(f'Initialized seedhash to {seed_hash.hex()}')
+        				state.seedHash = seed_hash
+				elif state.height > height_int:
+    				# Handle possible chain reorg by resetting
+    				seed_hash = bytes(32)
+    				print(f'Reverted seedhash to {seed_hash.hex()}')
+    				state.seedHash = seed_hash
+				
+				# Done with seed hash #
+				state.height = height_int
 
                 # The following occurs during both new blocks & new txs & nothing happens for 60s (magic number)
                 if new_block or new_witness or state.timestamp + 60 < ts:
