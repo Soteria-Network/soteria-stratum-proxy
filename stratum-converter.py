@@ -157,7 +157,7 @@ class StratumSession(RPCSession):
     async def handle_authorize(self, username: str, password: str):
         # The first address that connects is the one that is used
         address = username.split('.')[0]
-        if base58.b58decode_check(address)[0] != (111 if self._testnet else 63):
+        if base58.b58decode_check(address)[0] != (66 if self._testnet else 63):
             raise RPCError(20, f'Invalid address {address}')
         if not self._state.address:
             self._state.address = address
