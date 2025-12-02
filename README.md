@@ -1,3 +1,4 @@
+# Do not use it to mine Soter, it won't work, instead use SoterG-Stratum-Proxy which already tested on testnet & mainnet and is working successfully
 # soteria-stratum-proxy
 Allows you to mine directly to your own local wallet/node with any mining software that uses the stratum protocol.
 
